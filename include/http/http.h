@@ -17,8 +17,6 @@
 #define HTTP_VERSION        "HTTP/1.1"
 
 #define HTTP_DEFAULT_METHOD HTTP_METHOD_GET
-#define HTTP_DEFAULT_HOST   "localhost"
-#define HTTP_DEFAULT_URL    "/"
 
 #define HTTP_PROTOCOL_LB    "\r\n"
 
@@ -55,5 +53,7 @@ int HttpRequest_add_header(HttpRequest *, char * key, char * value);
 byte_t * HttpRequest_build(HttpRequest *);
 
 int HttpRequest_send(HttpRequest *, byte_t * response_buffer);
+
+int HttpRequest_send_port(HttpRequest *, byte_t * response_buffer, int port);
 
 int HttpRequest_destroy(HttpRequest *);

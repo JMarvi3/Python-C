@@ -9,7 +9,11 @@
 #include <unistd.h>
 
 
-int HttpRequest_send(HttpRequest * request_object, byte_t * response_buffer) {
+int HttpRequest_send_port(
+    HttpRequest * request_object,
+    byte_t * response_buffer,
+    int port
+) {
     int sock;
     int done_bytes, request_msg_len, request_msg_len_sent, response_msg_len_got;
     byte_t * request_msg;
@@ -28,7 +32,7 @@ int HttpRequest_send(HttpRequest * request_object, byte_t * response_buffer) {
 
     memset(&serv_addr, 0, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
-    serv_addr.sin_port = htons(HTTP_PORT);
+    serv_addr.sin_port = htons(port);
     memcpy(&serv_addr.sin_addr.s_addr, server->h_addr, server->h_length);
 
     if(connect(sock, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) {
@@ -60,6 +64,14 @@ int HttpRequest_send(HttpRequest * request_object, byte_t * response_buffer) {
         }
         response_msg_len_got += done_bytes;
     }
+    response_buffer[response_msg_len_got] = '\0';
 
     return ERROR_NO;
+}
+
+int HttpRequest_send(
+    HttpRequest * request_object,
+    byte_t * response_buffer
+) {
+    return HttpRequest_send_port(request_object, response_buffer, HTTP_PORT);
 }

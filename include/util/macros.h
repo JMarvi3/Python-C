@@ -7,6 +7,13 @@
 #define MALLOC(type, size) \
     ((type *) malloc(sizeof(type) * size))
 
+#define MALLOC_EMPTY(type, size) \
+    ({ \
+        type * ptr = MALLOC(type, size); \
+        memset(ptr, 0, sizeof(type) * size); \
+        ptr; \
+    })
+
 #define MALLOC1(type) \
     MALLOC(type, 1)
 
