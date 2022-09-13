@@ -5,8 +5,8 @@ Main purpose of this repository is to learn to build python modules with Python 
 
 <b>I use ```Python 3.8.10``` and ```gcc 9.4.0```</b>
 
-See code of 'HTTP client' in ```src/*``` directory and
-[myhttp.c](/myhttp.c) for Python C extention code.
+<b>See code of 'HTTP client' in ```src/*``` directory and
+[myhttp.c](/myhttp.c) for Python C extention code.</b>
 
 ### The 1st step:
 
