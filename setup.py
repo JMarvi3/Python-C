@@ -1,18 +1,17 @@
 from distutils.core import Extension, setup
 from glob import glob
+import numpy
 
 
 def main() -> None:
     c_files = [
-        "myhttp.c",
-        *glob("src/http/*.c"),
-        *glob("src/util/*.c"),
+        "example.c",
     ]
     setup(
-        name="MyHttp",
-        version="1.0.0",
-        description="Very simple Http client",
-        ext_modules=[Extension("myhttp", c_files)],
+        name="MyExample",
+        version="1.0.12",
+        description="Very simple Python C extension example",
+        ext_modules=[Extension("myexample", c_files, include_dirs=[numpy.get_include()])],
     )
 
 
