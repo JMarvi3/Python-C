@@ -1,2 +1,6 @@
 .vscode/
 build/
+venv/
+dist/
+*.egg-info/
+*.so
