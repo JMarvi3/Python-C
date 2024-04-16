@@ -246,8 +246,8 @@ PyObject *py_create_ndarray(PyObject *self, PyObject *args) {
 
 static PyMethodDef myexample_methods[] = {
     {"test", py_test, METH_NOARGS, "Test"},
-    {"decode_uv_delta", py_decode_uv_delta, METH_VARARGS, "Decode UV Delta"},
-    {"decode_ms", py_decode_ms, METH_KEYWORDS, "Decode MS"},
+    {"decode_uv_delta", (PyCFunction)py_decode_uv_delta, METH_VARARGS, "Decode UV Delta"},
+    {"decode_ms", (PyCFunction)py_decode_ms, METH_VARARGS | METH_KEYWORDS, "Decode MS"},
     {"create_ndarray", py_create_ndarray, METH_VARARGS, "Create ndarray"},
     {NULL, NULL, 0, NULL},
 };
